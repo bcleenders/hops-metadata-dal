@@ -23,6 +23,13 @@ public class TablesDef {
     public static final String INODE_ID = "inode_id";
   }
 
+  public static interface StoragesTableDef {
+    public static final String TABLE_NAME="hdfs_storages";
+    public static final String STORAGE_ID="storage_id";
+    public static final String HOST_ID="host_id";
+    public static final String STORAGE_TYPE="storage_type";
+  }
+
   public static interface INodeTableDef {
     // INode Table Columns
     public static final String TABLE_NAME = "hdfs_inodes";
