@@ -26,15 +26,15 @@ public class Storage {
     this.storage_type = storage_type;
   }
 
-  public int getStorage_id() {
+  public int getStorageID() {
     return storage_id;
   }
 
-  public String getHost_id() {
+  public String getHostID() {
     return host_id;
   }
 
-  public int getStorage_type() {
+  public int getStorageType() {
     return storage_type;
   }
 }

@@ -37,6 +37,8 @@ public interface BlockInfoDataAccess<T> extends EntityDataAccess {
   List<T> findAllBlocks() throws StorageException;
 
   List<T> findBlockInfosByStorageId(int storageId) throws StorageException;
+
+  List<T> findBlockInfosByHostId(String hostId) throws StorageException;
   
   Set<Long> findINodeIdsByStorageId(int storageId) throws StorageException;
   
