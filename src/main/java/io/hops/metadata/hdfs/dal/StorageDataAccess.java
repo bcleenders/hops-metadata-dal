@@ -35,5 +35,5 @@ public interface StorageDataAccess<T> extends EntityDataAccess {
   /**
    * Returns a list of storages on the given host.
    */
-  List<T> find(String hostId) throws StorageException;
+  List<T> findByHostUuid(String uuid) throws StorageException;
 }
