@@ -106,7 +106,7 @@ public class TablesDef {
     public static final String BLOCK_ID = "block_id";
     public static final String INODE_ID = "inode_id";
     public static final String PART_KEY = "part_key";
-    public static final String STORAGE_ID = "storage_id";
+    public static final String DATANODE_UUID = "datanode_uuid";
     public static final String STORAGE_IDX = "storage_idx";
   }
 
