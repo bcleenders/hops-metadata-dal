@@ -86,7 +86,7 @@ public class TablesDef {
     public static final String TABLE_NAME = "hdfs_corrupt_replicas";
     public static final String BLOCK_ID = "block_id";
     public static final String INODE_ID = "inode_id";
-    public static final String STORAGE_ID = "storage_id";
+    public static final String DATANODE_UUID = "datanode_uuid";
     public static final String TIMESTAMP = "timestamp";
   }
 
@@ -163,7 +163,7 @@ public class TablesDef {
 
     public static final String TABLE_NAME = "hdfs_invalidated_blocks";
     public static final String BLOCK_ID = "block_id";
-    public static final String STORAGE_ID = "storage_id";
+    public static final String DATANODE_UUID = "datanode_uuid";
     public static final String STORAGE_IDX = "storage_idx";
     public static final String INODE_ID = "inode_id";
     public static final String GENERATION_STAMP = "generation_stamp";

@@ -17,103 +17,12 @@ package io.hops.metadata.hdfs.entity;
 
 import io.hops.metadata.common.FinderType;
 
-public class ExcessReplica implements Comparable<ReplicaBase> {
+public class ExcessReplica extends RB {
   
-  protected String datanodeUuid;
-  protected long blockId;
-  private int inodeId;
-
   public ExcessReplica(String uuid, long blockId, int inodeId) {
-    this.datanodeUuid = uuid;
-    this.blockId = blockId;
-    this.inodeId = inodeId;
+    super(uuid, blockId, inodeId);
   }
   
-  /**
-   * @return the datanodeUuid
-   */
-  public String getDatanodeUuid() {
-    return datanodeUuid;
-  }
-  
-  /**
-   * @param datanodeUuid
-   *     the datanodeUuid to set
-   */
-  public void setDatanodeUuid(String datanodeUuid) {
-    this.datanodeUuid = datanodeUuid;
-  }
-  
-  /**
-   * @return the blockId
-   */
-  public long getBlockId() {
-    return blockId;
-  }
-  
-  /**
-   * @param blockId
-   *     the blockId to set
-   */
-  public void setBlockId(long blockId) {
-    this.blockId = blockId;
-  }
-  
-  @Override
-  public int hashCode() {
-    int hash = 7;
-    hash = 59 * hash + this.datanodeUuid.hashCode();
-    hash = 59 * hash + (int) (this.blockId ^ (this.blockId >>> 32));
-    return hash;
-  }
-  
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    final ExcessReplica other = (ExcessReplica) obj;
-    if (! this.datanodeUuid.equals(other.getDatanodeUuid())) {
-      return false;
-    }
-    if (this.blockId != other.blockId) {
-      return false;
-    }
-    return true;
-  }
-  
-  public int getInodeId() {
-    return inodeId;
-  }
-  
-  public void setInodeId(int inodeId) {
-    this.inodeId = inodeId;
-  }
-  
-  @Override
-  public int compareTo(ReplicaBase t) {
-    if (this.equals(t)) {
-      return 0;
-    }
-    
-    if (t == null) {
-      return 1;
-    }
-    
-    if (this.hashCode() == t.hashCode()) {
-      if (this.getBlockId() > t.getBlockId()) {
-        return 1;
-      } else {
-        return -1;
-      }
-    } else {
-      return Integer.compare(this.hashCode(), t.hashCode());
-    }
-  }
-
   public static enum Finder implements FinderType<ExcessReplica> {
 
     ByBlockIdDatanodeUuidAndINodeId,
@@ -141,6 +50,5 @@ public class ExcessReplica implements Comparable<ReplicaBase> {
           throw new IllegalStateException();
       }
     }
-
   }
 }

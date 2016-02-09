@@ -27,7 +27,8 @@ public interface CorruptReplicaDataAccess<T> extends EntityDataAccess {
 
   int countAllUniqueBlk() throws StorageException;
 
-  T findByPk(long blockId, int storageId, int inodeId) throws StorageException;
+  T findByPk(long blockId, String datanodeUuid, int inodeId) throws
+      StorageException;
 
   List<T> findAll() throws StorageException;
 

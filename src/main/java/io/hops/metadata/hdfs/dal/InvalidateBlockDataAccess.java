@@ -26,11 +26,11 @@ public interface InvalidateBlockDataAccess<T> extends EntityDataAccess {
 
   int countAll() throws StorageException;
 
-  List<T> findInvalidatedBlockByStorageId(int storageId)
+  List<T> findInvalidatedBlockByDatanodeUuid(String uuid)
       throws StorageException;
   
-  Map<Long,Long> findInvalidatedBlockByStorageIdUsingMySQLServer(int storageId)
-      throws StorageException;
+  Map<Long,Long> findInvalidatedBlockByDatanodeUuidUsingMySQLServer(String
+      uuid) throws StorageException;
 
   List<T> findInvalidatedBlocksByBlockId(long bid, int inodeId)
       throws StorageException;
@@ -45,7 +45,7 @@ public interface InvalidateBlockDataAccess<T> extends EntityDataAccess {
   List<T> findInvalidatedBlocksbyPKS(long[] blockIds, int[] inodesIds,
       int[] storageIds) throws StorageException;
 
-  T findInvBlockByPkey(long blockId, int storageId, int inodeId)
+  T findInvBlockByPkey(long blockId, String uuid, int inodeId)
       throws StorageException;
 
   void prepare(Collection<T> removed, Collection<T> newed,
@@ -53,5 +53,5 @@ public interface InvalidateBlockDataAccess<T> extends EntityDataAccess {
 
   void removeAll() throws StorageException;
 
-  void removeAllByStorageId(int storageId) throws StorageException;
+  void removeAllByDatanodeUuid(String uuid) throws StorageException;
 }
