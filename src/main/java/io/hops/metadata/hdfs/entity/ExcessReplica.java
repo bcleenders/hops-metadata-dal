@@ -19,8 +19,9 @@ import io.hops.metadata.common.FinderType;
 
 public class ExcessReplica extends RB {
   
-  public ExcessReplica(String uuid, long blockId, int inodeId) {
-    super(uuid, blockId, inodeId);
+  public ExcessReplica(String datenodeUuid, int storageId, long blockId, int
+      inodeId) {
+    super(datenodeUuid, storageId, blockId, inodeId);
   }
   
   public static enum Finder implements FinderType<ExcessReplica> {

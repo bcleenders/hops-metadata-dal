@@ -52,19 +52,19 @@ public class InvalidatedBlock extends RB {
           throw new IllegalStateException();
       }
     }
-
   }
 
   private long generationStamp;
   private long numBytes;
 
-  public InvalidatedBlock(String datanodeUuid, long blockId, int inodeId) {
-    super(datanodeUuid, blockId, inodeId);
+  public InvalidatedBlock(String datanodeUuid, int storageId, long blockId, int
+      inodeId) {
+    super(datanodeUuid, storageId, blockId, inodeId);
   }
 
-  public InvalidatedBlock(String datanodeUuid, long blockId, long
-      generationStamp, long numBytes, int inodeId) {
-    super(datanodeUuid, blockId, inodeId);
+  public InvalidatedBlock(String datanodeUuid, int storageId, long blockId,
+      long  generationStamp, long numBytes, int inodeId) {
+    super(datanodeUuid, storageId, blockId, inodeId);
     this.generationStamp = generationStamp;
     this.numBytes = numBytes;
   }

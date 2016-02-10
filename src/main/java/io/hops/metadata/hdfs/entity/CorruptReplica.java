@@ -43,10 +43,9 @@ public class CorruptReplica extends RB {
           throw new IllegalStateException();
       }
     }
-
   }
 
-  public CorruptReplica(long blockId, String datanodeUuid, int inodeId) {
-    super(datanodeUuid, blockId, inodeId);
+  public CorruptReplica(String datanodeUuid, int storageId, long blockId, int inodeId) {
+    super(datanodeUuid, storageId, blockId, inodeId);
   }
 }

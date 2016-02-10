@@ -15,16 +15,17 @@
  */
 package io.hops.metadata.hdfs.entity;
 
-public abstract class RB implements Comparable<RB> {
+/**
+ * For records of replica's where we store both the storageId and the
+ * datanodeUuid
+ */
+public abstract class RB extends ReplicaBase implements Comparable<ReplicaBase> {
   
   protected String datanodeUuid;
-  protected long blockId;
-  private int inodeId;
-  
-  public RB(String datanodeUuid, long blockId, int inodeId) {
+
+  protected RB(String datanodeUuid, int storageId, long blockId, int inodeId) {
+    super(storageId, blockId, inodeId);
     this.datanodeUuid = datanodeUuid;
-    this.blockId = blockId;
-    this.inodeId = inodeId;
   }
   
   /**
@@ -40,71 +41,5 @@ public abstract class RB implements Comparable<RB> {
    */
   public void setDatanodeUuid(String datanodeUuid) {
     this.datanodeUuid = datanodeUuid;
-  }
-  
-  /**
-   * @return the blockId
-   */
-  public long getBlockId() {
-    return blockId;
-  }
-  
-  /**
-   * @param blockId
-   *     the blockId to set
-   */
-  public void setBlockId(long blockId) {
-    this.blockId = blockId;
-  }
-  
-  @Override
-  public int hashCode() {
-    int hash = 7;
-    hash = 59 * hash + this.datanodeUuid.hashCode();
-    hash = 59 * hash + (int) (this.blockId ^ (this.blockId >>> 32));
-    return hash;
-  }
-  
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    final RB other = (RB) obj;
-    if (this.datanodeUuid != other.datanodeUuid) {
-      return false;
-    }
-    if (this.blockId != other.blockId) {
-      return false;
-    }
-    return true;
-  }
-  
-  public int getInodeId() {
-    return inodeId;
-  }
-  
-  public void setInodeId(int inodeId) {
-    this.inodeId = inodeId;
-  }
-  
-  @Override
-  public int compareTo(RB t) {
-    if (this.equals(t)) {
-      return 0;
-    }
-    
-    if (t == null) {
-      return 1;
-    }
-    
-    if (this.getDatanodeUuid() == t.getDatanodeUuid()) {
-      return Long.compare(this.getBlockId(), t.getBlockId());
-    } else {
-      return this.getDatanodeUuid().compareTo(t.getDatanodeUuid());
-    }
   }
 }
