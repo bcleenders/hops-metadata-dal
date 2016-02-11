@@ -54,4 +54,6 @@ public interface InvalidateBlockDataAccess<T> extends EntityDataAccess {
   void removeAll() throws StorageException;
 
   void removeAllByDatanodeUuid(String uuid) throws StorageException;
+
+  void removeByDatanodeUuid(long blockId, String datanodeUuid) throws StorageException;
 }

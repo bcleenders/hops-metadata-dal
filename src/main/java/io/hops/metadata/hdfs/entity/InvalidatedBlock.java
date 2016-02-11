@@ -26,6 +26,7 @@ public class InvalidatedBlock extends RB {
     ByINodeIds,
     ByBlockIdDatanodeUuidAndINodeId,
     ByDatanodeUuid,
+    ByStorageId,
     All;
 
     @Override
@@ -46,6 +47,8 @@ public class InvalidatedBlock extends RB {
           return Annotation.PrimaryKey;
         case ByDatanodeUuid:
           return Annotation.IndexScan;
+        case ByStorageId:
+          return Annotation.IndexScan;
         case All:
           return Annotation.FullTable;
         default:
@@ -57,8 +60,7 @@ public class InvalidatedBlock extends RB {
   private long generationStamp;
   private long numBytes;
 
-  public InvalidatedBlock(String datanodeUuid, int storageId, long blockId, int
-      inodeId) {
+  public InvalidatedBlock(String datanodeUuid, int storageId, long blockId, int inodeId) {
     super(datanodeUuid, storageId, blockId, inodeId);
   }
 

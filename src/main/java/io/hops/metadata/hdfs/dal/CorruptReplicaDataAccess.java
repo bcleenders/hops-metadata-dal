@@ -37,6 +37,9 @@ public interface CorruptReplicaDataAccess<T> extends EntityDataAccess {
   List<T> findByINodeId(int inodeId) throws StorageException;
   
   List<T> findByINodeIds(int[] inodeIds) throws StorageException;
+
+  void removeByDatanodeUuid(long blockId, String datanodeUuid) throws
+      StorageException;
   
   void prepare(Collection<T> removed, Collection<T> newed,
       Collection<T> modified) throws StorageException;
