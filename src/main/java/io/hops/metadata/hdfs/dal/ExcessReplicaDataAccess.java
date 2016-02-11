@@ -34,7 +34,7 @@ public interface ExcessReplicaDataAccess<T> extends EntityDataAccess {
   
   List<T> findExcessReplicaByINodeIds(int[] inodeIds) throws StorageException;
 
-  T findByPK(long bId, String uuid, int inodeId) throws StorageException;
+  T findByPK(long blockId, String uuid, int inodeId) throws StorageException;
 
   void prepare(Collection<T> removed, Collection<T> newed,
       Collection<T> modified) throws StorageException;
