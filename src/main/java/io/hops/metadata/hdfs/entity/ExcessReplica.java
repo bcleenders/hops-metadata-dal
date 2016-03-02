@@ -17,16 +17,15 @@ package io.hops.metadata.hdfs.entity;
 
 import io.hops.metadata.common.FinderType;
 
-public class ExcessReplica extends RB {
+public class ExcessReplica extends ReplicaBase {
   
-  public ExcessReplica(String datenodeUuid, int storageId, long blockId, int
-      inodeId) {
-    super(datenodeUuid, storageId, blockId, inodeId);
+  public ExcessReplica(int sid, long blockId, int inodeId) {
+    super(sid, blockId, inodeId);
   }
   
   public static enum Finder implements FinderType<ExcessReplica> {
 
-    ByBlockIdDatanodeUuidAndINodeId,
+    ByBlockIdSidAndINodeId,
     ByBlockIdAndINodeId,
     ByINodeId,
     ByINodeIds;
@@ -39,7 +38,7 @@ public class ExcessReplica extends RB {
     @Override
     public Annotation getAnnotated() {
       switch (this) {
-        case ByBlockIdDatanodeUuidAndINodeId:
+        case ByBlockIdSidAndINodeId:
           return Annotation.PrimaryKey;
         case ByBlockIdAndINodeId:
           return Annotation.PrunedIndexScan;

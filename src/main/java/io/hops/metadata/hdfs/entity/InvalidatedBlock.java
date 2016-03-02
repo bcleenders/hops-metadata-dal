@@ -17,16 +17,15 @@ package io.hops.metadata.hdfs.entity;
 
 import io.hops.metadata.common.FinderType;
 
-public class InvalidatedBlock extends RB {
+public class InvalidatedBlock extends ReplicaBase {
 
   public static enum Finder implements FinderType<InvalidatedBlock> {
 
     ByBlockIdAndINodeId,
     ByINodeId,
     ByINodeIds,
-    ByBlockIdDatanodeUuidAndINodeId,
-    ByDatanodeUuid,
-    ByStorageId,
+    ByBlockIdSidAndINodeId,
+    BySid,
     All;
 
     @Override
@@ -43,11 +42,9 @@ public class InvalidatedBlock extends RB {
           return Annotation.PrunedIndexScan;
         case ByINodeIds:
           return Annotation.BatchedPrunedIndexScan;
-        case ByBlockIdDatanodeUuidAndINodeId:
+        case ByBlockIdSidAndINodeId:
           return Annotation.PrimaryKey;
-        case ByDatanodeUuid:
-          return Annotation.IndexScan;
-        case ByStorageId:
+        case BySid:
           return Annotation.IndexScan;
         case All:
           return Annotation.FullTable;
@@ -60,13 +57,13 @@ public class InvalidatedBlock extends RB {
   private long generationStamp;
   private long numBytes;
 
-  public InvalidatedBlock(String datanodeUuid, int storageId, long blockId, int inodeId) {
-    super(datanodeUuid, storageId, blockId, inodeId);
+  public InvalidatedBlock(int sid, long blockId, int inodeId) {
+    super(sid, blockId, inodeId);
   }
 
-  public InvalidatedBlock(String datanodeUuid, int storageId, long blockId,
+  public InvalidatedBlock(int sid, long blockId,
       long  generationStamp, long numBytes, int inodeId) {
-    super(datanodeUuid, storageId, blockId, inodeId);
+    super(sid, blockId, inodeId);
     this.generationStamp = generationStamp;
     this.numBytes = numBytes;
   }

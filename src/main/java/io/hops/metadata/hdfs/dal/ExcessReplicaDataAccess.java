@@ -25,7 +25,7 @@ public interface ExcessReplicaDataAccess<T> extends EntityDataAccess {
 
   int countAll() throws StorageException;
 
-  List<T> findExcessReplicaByDatanodeUuid(String uuid) throws StorageException;
+  List<T> findExcessReplicaBySid(int sid) throws StorageException;
 
   List<T> findExcessReplicaByBlockId(long bId, int inodeId)
       throws StorageException;
@@ -34,7 +34,7 @@ public interface ExcessReplicaDataAccess<T> extends EntityDataAccess {
   
   List<T> findExcessReplicaByINodeIds(int[] inodeIds) throws StorageException;
 
-  T findByPK(long blockId, String uuid, int inodeId) throws StorageException;
+  T findByPK(long blockId, int sid, int inodeId) throws StorageException;
 
   void prepare(Collection<T> removed, Collection<T> newed,
       Collection<T> modified) throws StorageException;

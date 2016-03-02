@@ -17,7 +17,7 @@ package io.hops.metadata.hdfs.entity;
 
 import io.hops.metadata.common.FinderType;
 
-public class CorruptReplica extends RB {
+public class CorruptReplica extends ReplicaBase {
 
   public static enum Finder implements FinderType<CorruptReplica> {
 
@@ -45,7 +45,7 @@ public class CorruptReplica extends RB {
     }
   }
 
-  public CorruptReplica(String datanodeUuid, int storageId, long blockId, int inodeId) {
-    super(datanodeUuid, storageId, blockId, inodeId);
+  public CorruptReplica(int sid, long blockId, int inodeId) {
+    super(sid, blockId, inodeId);
   }
 }

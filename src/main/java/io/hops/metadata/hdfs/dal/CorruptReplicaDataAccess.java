@@ -27,8 +27,7 @@ public interface CorruptReplicaDataAccess<T> extends EntityDataAccess {
 
   int countAllUniqueBlk() throws StorageException;
 
-  T findByPk(long blockId, String datanodeUuid, int inodeId) throws
-      StorageException;
+  T findByPk(long blockId, int sid, int inodeId) throws StorageException;
 
   List<T> findAll() throws StorageException;
 
@@ -38,8 +37,7 @@ public interface CorruptReplicaDataAccess<T> extends EntityDataAccess {
   
   List<T> findByINodeIds(int[] inodeIds) throws StorageException;
 
-  void removeByDatanodeUuid(long blockId, String datanodeUuid) throws
-      StorageException;
+  void removeByBlockIdAndSid(long blockId, int sid) throws StorageException;
   
   void prepare(Collection<T> removed, Collection<T> newed,
       Collection<T> modified) throws StorageException;

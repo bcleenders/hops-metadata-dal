@@ -15,12 +15,11 @@
  */
 package io.hops.metadata.hdfs.entity;
 
-public class ReplicaUnderConstruction extends ReplicaBase{
+public class ReplicaUnderConstruction extends ReplicaBase {
 
   private int state;
 
-  public ReplicaUnderConstruction(int state, int storageId, long blockId,
-      int inodeId) {
+  public ReplicaUnderConstruction(int state, int storageId, long blockId, int inodeId) {
     super(storageId, blockId, inodeId);
     this.state = state;
   }
