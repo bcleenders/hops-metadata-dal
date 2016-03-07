@@ -26,11 +26,13 @@ public interface StorageDataAccess<T> extends EntityDataAccess {
   void prepare(Collection<T> modified,
       Collection<T> removed) throws StorageException;
 
+  void add(T s) throws StorageException;
+
   /**
    * Returns a single entry of the storage. Note that the storageId is a
    * primary key.
    */
-  T find(int storageId) throws StorageException;
+  T findByPk(int sid) throws StorageException;
 
   /**
    * Returns a list of storages on the given host.
