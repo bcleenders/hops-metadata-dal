@@ -13,24 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.hops.metadata.yarn.dal.capacity;
+package io.hops.metadata.yarn.dal.rmstatestore;
 
 import io.hops.exception.StorageException;
 import io.hops.metadata.common.EntityDataAccess;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
-public interface CSQueueDataAccess<T extends Object> extends EntityDataAccess {
+/**
+ *
+ * @author gautier
+ */
+public interface AllocateRPCDataAccess<T> extends EntityDataAccess {
 
-  public T findById(String string) throws StorageException;
+  void add(T toAdd) throws StorageException;
 
-  Map<String, T> getAll() throws StorageException, IOException;
-
-  public void addAll(Collection<T> clctn) throws StorageException;
-
-  public void removeAll(Collection<T> clctn) throws StorageException;
-
-  public void createCSQueue(T t) throws StorageException;
+  Map<Integer, T> getAll() throws StorageException;
 }
