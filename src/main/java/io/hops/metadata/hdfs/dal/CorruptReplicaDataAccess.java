@@ -37,8 +37,6 @@ public interface CorruptReplicaDataAccess<T> extends EntityDataAccess {
   
   List<T> findByINodeIds(int[] inodeIds) throws StorageException;
 
-  void removeByBlockIdAndSid(long blockId, int sid) throws StorageException;
-  
   void prepare(Collection<T> removed, Collection<T> newed,
       Collection<T> modified) throws StorageException;
 }
