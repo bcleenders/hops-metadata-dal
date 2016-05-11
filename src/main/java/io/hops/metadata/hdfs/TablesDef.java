@@ -53,6 +53,7 @@ public class TablesDef {
     public static final String SUBTREE_LOCK_OWNER = "subtree_lock_owner";
     public static final String META_ENABLED = "meta_enabled";
     public static final String SIZE = "size";
+    public static final String STORAGE_POLICY = "storage_policy";
   }
 
   public static interface UsersTableDef {
