@@ -38,10 +38,9 @@ public class INode extends INodeBase implements Comparable<INode> {
   public INode(int id, String name, int parentId, boolean dirWithQuota,
       long modificationTime, long accessTime, int userID, int
       groupID, short permission, boolean underConstruction, String clientName,
-      String clientMachine,
-      String clientNode, int generationStamp, long header, String symlink,
-      boolean subtreeLocked, long subtreeLockOwner, boolean metaEnabled,
-      long size, byte storagePolicy) {
+      String clientMachine, String clientNode, int generationStamp, long header,
+      String symlink, boolean subtreeLocked, long subtreeLockOwner,
+      boolean metaEnabled, long size, byte storagePolicy) {
 
     super(id, parentId, name, userID, groupID, permission, header,
         dirWithQuota, underConstruction, subtreeLocked, subtreeLockOwner,
